@@ -24,7 +24,7 @@ public class InvoiceService {
     }
 
     public void addRides(String userId, List<Ride> rides) {
-        repository.addToList(userId,rides);
+        repository.addToUserRideHistory(userId,rides);
     }
 
     public InvoiceSummary getInvoiceSummary(String userId) {
