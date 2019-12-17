@@ -10,9 +10,11 @@ public class RideRepositoryTest {
     public void givenAList_ShouldGetAddedToRepository() {
         RideRepository rideRepository = new RideRepository();
         List<Ride> listOfRides = new ArrayList<>();
-        listOfRides.add(new Ride(2,5));
-        listOfRides.add(new Ride(0.1,1));
-        rideRepository.addToUserRideHistory(userId,listOfRides);
+        listOfRides.add(new Ride(2,5, InvoiceService.TypeOfCab.NORMAL));
+        listOfRides.add(new Ride(0.1,1, InvoiceService.TypeOfCab.NORMAL));
+        for (Ride ride: listOfRides) {
+            rideRepository.addToUserRideHistory(userId,ride);
+        }
         RideRepository expectedRideRepository = new RideRepository();
         expectedRideRepository.userRidesHistory.put(userId,listOfRides);
         Assert.assertEquals(expectedRideRepository,rideRepository);
@@ -22,13 +24,17 @@ public class RideRepositoryTest {
     public void givenAList_ShouldGetAppendedToRepository() {
         RideRepository rideRepository = new RideRepository();
         List<Ride> listOfRides = new ArrayList<>();
-        listOfRides.add(new Ride(2,5));
-        listOfRides.add(new Ride(0.1,1));
-        rideRepository.addToUserRideHistory(userId,listOfRides);
+        listOfRides.add(new Ride(2,5, InvoiceService.TypeOfCab.NORMAL));
+        listOfRides.add(new Ride(0.1,1, InvoiceService.TypeOfCab.NORMAL));
+        for (Ride ride: listOfRides) {
+            rideRepository.addToUserRideHistory(userId,ride);
+        }
         List<Ride> updatedListOfRides = new ArrayList<>();
-        updatedListOfRides.add(new Ride(2,5));
-        updatedListOfRides.add(new Ride(0.1,1));
-        rideRepository.addToUserRideHistory(userId,updatedListOfRides);
+        updatedListOfRides.add(new Ride(2,5, InvoiceService.TypeOfCab.NORMAL));
+        updatedListOfRides.add(new Ride(0.1,1, InvoiceService.TypeOfCab.NORMAL));
+        for (Ride ride: listOfRides) {
+            rideRepository.addToUserRideHistory(userId,ride);
+        }
         Assert.assertEquals(4,(rideRepository.userRidesHistory.get(userId)).size());
     }
 }

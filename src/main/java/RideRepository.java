@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class RideRepository {
     Map<String,List<Ride>> userRidesHistory;
@@ -10,12 +7,14 @@ public class RideRepository {
         this.userRidesHistory = new HashMap<>();
     }
 
-    public void addToUserRideHistory(String userId, List<Ride> rides) {
+    public void addToUserRideHistory(String userId,Ride ride) {
+        List<Ride> newList = new ArrayList<>();
+        newList.add(ride);
         List<Ride> previousRides = this.userRidesHistory.get(userId);
         if(previousRides != null) {
-            rides.addAll(previousRides);
+            newList.addAll(previousRides);
         }
-        this.userRidesHistory.put(userId,rides);
+        this.userRidesHistory.put(userId,newList);
     }
 
     @Override
