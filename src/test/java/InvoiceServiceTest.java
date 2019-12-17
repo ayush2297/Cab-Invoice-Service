@@ -56,11 +56,11 @@ public class InvoiceServiceTest {
 
     @Test
     public void givenUserIdAndMultipleRides_ShouldReturnUpdatedInvoiceSummary() {
-        Ride[] rides = {
+        Ride[] rides1 = {
                 new Ride(0.1, 1, InvoiceService.TypeOfCab.PREMIUM),
                 new Ride(2.0, 5, InvoiceService.TypeOfCab.NORMAL)
         };
-        List<Ride> ridesList = new ArrayList<Ride>(Arrays.asList(rides));
+        List<Ride> ridesList = new ArrayList<Ride>(Arrays.asList(rides1));
         invoiceService.addRides(userId,ridesList);
         Ride[] rides2 = {
                 new Ride(0.1, 1, InvoiceService.TypeOfCab.NORMAL),
