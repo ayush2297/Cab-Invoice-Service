@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -59,13 +58,13 @@ public class InvoiceServiceTest {
     public void givenUserIdAndMultipleRides_ShouldReturnUpdatedInvoiceSummary() {
         Ride[] rides = {
                 new Ride(0.1, 1, InvoiceService.TypeOfCab.PREMIUM),
-                new Ride(2.0, 5, InvoiceService.TypeOfCab.PREMIUM)
+                new Ride(2.0, 5, InvoiceService.TypeOfCab.NORMAL)
         };
         List<Ride> ridesList = new ArrayList<Ride>(Arrays.asList(rides));
         invoiceService.addRides(userId,ridesList);
         Ride[] rides2 = {
                 new Ride(0.1, 1, InvoiceService.TypeOfCab.NORMAL),
-                new Ride(2.0, 5, InvoiceService.TypeOfCab.NORMAL)
+                new Ride(2.0, 5, InvoiceService.TypeOfCab.PREMIUM)
         };
         List<Ride> ridesList2 = new ArrayList<Ride>(Arrays.asList(rides2));
         invoiceService.addRides(userId,ridesList2);
